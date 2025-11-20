@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Dialogue Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+
+        background: #2c3e50;
+        background: -webkit-linear-gradient(
+          to right,
+          #4ca1af,
+          #2c3e50
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #4ca1af, #2c3e50);
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #f2f2f2;
+      }
+      h1 {
+        text-align: center;
+        color: #333333;
+      }
+      label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+      }
+      textarea,
+      select,
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0 20px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+      }
+      .output {
+        background-color: #e9f7ef;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .output p {
+        margin: 5px 0;
+        font-family: "Courier New", Courier, monospace;
+      }
+      button {
+        background-color: #2d5f91;
+        color: #f2f2f2;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color: whitesmoke; text-shadow: 4px 3px 4px #01386f">
+        Character Dialogue Generator
+      </h1>
+      <form id="dialogueForm">
+        <label for="character1">CHARACTER 1:</label>
+        <textarea
+          id="character1"
+          rows="2"
+          placeholder="Enter the name for character1"
+        ></textarea>
+
+        <label for="character2">CHARACTER 2:</label>
+        <textarea
+          id="character2"
+          rows="2"
+          placeholder="Enter the name for character2 "
+        ></textarea>
+
+        <label for="style">SCENARIO:</label>
+        <select id="style">
+          <option value="friendly">Friendly</option>
+          <option value="dramatic">Dramatic</option>
+          <option value="humorous">Humorous</option>
+        </select>
+
+        <label for="style1">DIALOGUE STYLE:</label>
+        <select id="style1">
+          <option value="concise">Concise</option>
+          <option value="moderate lenght">Modrate length</option>
+          <option value="descriptive">Descriptive</option>
+        </select>
+
+        <button type="button" onclick="generateDialogue()">
+          Generate Dialogue
+        </button>
+      </form>
+
+      <div id="output" class="output"></div>
+    </div>
+
+    <script>
+      function generateDialogue() {
+        const char1 = document.getElementById("character1").value;
+        const char2 = document.getElementById("character2").value;
+        const style1 = document.getElementById("style1").value;
+        const style = document.getElementById("style").value;
+
+        let dialogue;
+
+        if (style1 === "concise" && style === "dramatic") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>I saw you last night, ${
+            char2.split(":")[0]
+          }. You weren’t alone.</p>
+                          <p><strong>${char2.split(":")[0]}:</strong>  ${
+            char1.split(":")[0]
+          },it’s not what you think. Please let me explain.</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Explain what? That everything we built was a lie?</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> No! I was trying to protect you from the truth—you wouldn’t understand. </p>
+
+
+                      `;
+        } else if (style1 === "concise" && style === "humorous") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Did you really eat the entire cake by yourself?</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>Technically, no. The fork helped. </p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Unbelievable. What’s your excuse this time?</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> I was saving you from the calories. You’re welcome!</p>
+
+
+
+                      `;
+        } else if (style1 === "concise" && style === "friendly") {
+          dialogue = `
+                          <p><strong>${char1.split(":")[0]}:</strong>Hey,  ${
+            char2.split(":")[0]
+          }!    how’s the new job?</p>
+                          <p><strong>${char2.split(":")[0]}:</strong>  ${
+            char1.split(":")[0]
+          }! It’s going great! Lots to learn, but I’m enjoying it.</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Nice! You’ve been busy then?</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> Yeah, but I’m making time for weekend hikes. </p>
+                           <p><strong>${
+                             char1.split(":")[0]
+                           }:</strong>That’s awesome. We should plan one together soon.</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>  Definitely! Let’s do it.</p>
+
+                      `;
+        } else if (style1 === "moderate lenght" && style === "dramatic") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong> You lied to me,  All this time, you knew the truth.</p>
+                          <p><strong>${char2.split(":")[0]}:</strong>${
+            char2.split(":")[0]
+          },I was trying to protect you. You wouldn’t have understood back then.</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Protect me? By keeping me in the dark? You betrayed my trust!</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>I didn’t want to lose you... but now it seems I’ve done exactly that. </p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>Maybe you should’ve trusted me enough to let me decide for myself. </p>
+
+
+                      `;
+        } else if (style1 === "concise" && style === "humorous") {
+          dialogue = `
+                    <p><strong>${
+                      char1.split(":")[0]
+                    }:</strong>Did you really eat the entire cake by yourself?</p>
+                    <p><strong>${
+                      char2.split(":")[0]
+                    }:</strong>Technically, no. The fork helped. </p>
+                    <p><strong>${
+                      char1.split(":")[0]
+                    }:</strong>Unbelievable. What’s your excuse this time?</p>
+                    <p><strong>${
+                      char2.split(":")[0]
+                    }:</strong> I was saving you from the calories. You’re welcome!</p>
+
+
+                    
+                `;
+        } else if (style1 === "moderate lenght" && style === "friendly") {
+          dialogue = `
+                          <p><strong>${char1.split(":")[0]}:</strong> Hey,${
+            char1.split(":")[0]
+          }!It’s been a while! How’s everything?</p>
+                          <p><strong>${char2.split(":")[0]}:</strong>Busy,${
+            char1.split(":")[0]
+          }! but good. You? How’s the photography project?</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>  I had my first exhibition last week! It went great.</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>That’s awesome! I’m proud of you.</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong> Thanks! What about you? Working on that app? </p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>Yeah, it’s for students to track productivity. Almost done.</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong> Sounds cool. Let me know when it’s ready! </p>
+                        <p><strong>${
+                          char2.split(":")[0]
+                        }:</strong>For sure.You planning anything after the exhibition?</p>
+                        <p><strong>${
+                          char1.split(":")[0]
+                        }:</strong> Thinking of a trip to Italy for inspiration.</p>
+                        <p><strong>${
+                          char2.split(":")[0]
+                        }:</strong>That sounds amazing. Count me in next time!</p>
+
+                        <p><strong>${
+                          char1.split(":")[0]
+                        }:</strong> Let’s plan it!</p>
+
+                      `;
+        } else if (style === "friendly" && style1 === "descriptive") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong> smiling as she stirs her coffee "It feels so good to finally take a breather after this crazy week. I swear, I haven’t had time to just relax in ages."</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> leaning back in his chair, grinning "Tell me about it! I’ve been buried under deadlines, but now that we’re here, I feel like I can actually breathe again."</p>
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>laughs, taking a sip of her drink "Exactly! I missed just hanging out and having these random chats. Work can be such a drain sometimes." </p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> nodding thoughtfully "Yeah, but it makes these little moments feel so much sweeter, right? Like we’re recharging for round two."
+      </p>
+
+                      `;
+        } else if (style1 === "descriptive" && style === "humorous") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>holding the tangled kite string, squinting at the sky "Okay, so, the kite's supposed to fly, right? Not take a nosedive straight into the dirt?" </p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>laughing as the kite crashes again "Well, I think it’s more 'skydiving' than flying at this point. Maybe it’s a rebellious kite with no interest in gravity."</p>
+      <p><strong>${
+        char1.split(":")[0]
+      }:</strong> sighing dramatically "I feel like this is a metaphor for my life—trying really hard, but everything just keeps falling apart."</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong>grinning mischievously "Don’t worry, at least the kite’s still trying. Unlike you, it's giving effort. Maybe it just needs a pep talk!" </p>
+
+                      `;
+        } else if (style1 === "descriptive" && style === "dramatic") {
+          dialogue = `
+                          <p><strong>${
+                            char1.split(":")[0]
+                          }:</strong>voice trembling, eyes wide with frustration "I can't believe this! We were so close, and now we're stuck here in the rain because of you!" </p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> taking a deep breath, his face tense, but his voice soft "${
+            char1.split(":")[0]
+          }, I didn’t mean for this to happen. You have to believe me. I was trying to make things right—but you wouldn’t listen!"</p>
+      <p><strong>${
+        char1.split(":")[0]
+      }:</strong> eyes flashing, rain running down her face, but her voice breaking "You always say that! Always! But here we are, stuck in the cold, and it feels like you never really hear me!"</p>
+                          <p><strong>${
+                            char2.split(":")[0]
+                          }:</strong> stepping closer, his expression softening, reaching out "${
+            char2.split(":")[0]
+          }, please. I’m not perfect, but I need you to understand—this... this fight isn’t bigger than us. I’ll wait in the rain if I have to, but I can’t lose you."</p>
+
+                      `;
+        }
+
+        document.getElementById("output").innerHTML = `
+                      <h3>Generated Dialogue</h3>
+                      ${dialogue}
+                  `;
+      }
+    </script>
+  </body>
+</html>
